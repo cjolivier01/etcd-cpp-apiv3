@@ -1,0 +1,72 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@com_github_grpc_grpc//bazel:cc_grpc_library.bzl", "cc_grpc_library")
+
+
+cc_proto_library(
+    name = "etcd_cpp_apiv3_proto_cc",
+    visibility = ["//visibility:public"],
+    deps = [
+        ":etcd_cpp_apiv3_proto",
+    ],
+)
+
+proto_library(
+    name = "etcd_cpp_apiv3_proto",
+    srcs = [
+        ":all_proto_files",
+        ":dep_proto_files",
+        ":grpc_proto_files",
+    ],
+    strip_import_prefix = "proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_protobuf//:descriptor_proto",
+        "@com_google_protobuf//:empty_proto",
+    ],
+)
+
+proto_library(
+    name = "etcd_cpp_apiv3_grpc",
+    srcs = [
+        # ":all_proto_files",
+        # ":dep_proto_files",
+        ":grpc_proto_files",
+    ],
+    # strip_import_prefix = "proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_protobuf//:descriptor_proto",
+        "@com_google_protobuf//:empty_proto",
+    ],
+)
+
+filegroup(
+    name = "all_proto_files",
+    srcs = [
+        "auth.proto",
+        "etcdserver.proto",
+        "kv.proto",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "dep_proto_files",
+    srcs = [
+        "gogoproto/gogo.proto",
+        "google/api/annotations.proto",
+        "google/api/http.proto",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "grpc_proto_files",
+    srcs = [
+        "rpc.proto",
+        "v3election.proto",
+        "v3lock.proto",
+    ],
+    visibility = ["//visibility:public"],
+)

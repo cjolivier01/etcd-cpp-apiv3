@@ -31,9 +31,9 @@
 
 #include <grpc++/grpc++.h>
 #include <grpc++/security/credentials.h>
-#include "proto/rpc.grpc.pb.h"
-#include "proto/v3election.grpc.pb.h"
-#include "proto/v3lock.grpc.pb.h"
+#include "rpc.grpc.pb.h"
+#include "v3election.grpc.pb.h"
+#include "v3lock.grpc.pb.h"
 
 #include "etcd/Client.hpp"
 #include "etcd/KeepAlive.hpp"

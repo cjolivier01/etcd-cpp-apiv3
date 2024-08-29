@@ -6,3 +6,4 @@ default.etcd/
 
 # vscode-clangd
 .cache/
+remove_proto_from_pb_include_dir.patch
